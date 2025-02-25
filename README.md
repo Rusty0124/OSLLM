@@ -19,7 +19,7 @@ Here's a **README.md** file for your **OSLLM** project on GitHub. It includes in
 ## **🛠 Installation**
 ### **1️⃣ Clone the Repository**
 ```sh
-git clone https://github.com/yourgithubusername/OSLLM.git
+git clone https://github.com/Rusty0124/OSLLM.git
 cd OSLLM
 ```
 
