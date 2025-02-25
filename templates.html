@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSLLM Chat</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        input { width: 80%; padding: 10px; margin-top: 10px; }
+        button { padding: 10px; cursor: pointer; }
+        .chat-box { max-width: 600px; margin: 20px auto; text-align: left; }
+        .message { padding: 8px; border-radius: 5px; margin: 5px 0; }
+        .user { background-color: #ddd; }
+        .bot { background-color: #b3e5fc; }
+    </style>
+</head>
+<body>
+    <h2>OSLLM Chat</h2>
+    <div class="chat-box" id="chat-box"></div>
+    <input type="text" id="user-input" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        function sendMessage() {
+            let inputField = document.getElementById("user-input");
+            let chatBox = document.getElementById("chat-box");
+
+            let userMessage = document.createElement("div");
+            userMessage.className = "message user";
+            userMessage.innerText = inputField.value;
+            chatBox.appendChild(userMessage);
+
+            fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ prompt: inputField.value })
+            })
+            .then(response => response.json())
+            .then(data => {
+                let botMessage = document.createElement("div");
+                botMessage.className = "message bot";
+                botMessage.innerText = data.response;
+                chatBox.appendChild(botMessage);
+            });
+
+            inputField.value = "";
+        }
+    </script>
+</body>
+</html>
