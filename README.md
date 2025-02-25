@@ -69,12 +69,6 @@ python app.py
 | Vocabulary Size | 32,000 |
 | Epochs        | 3 |
 | Learning Rate | 5e-5 |
-
----
-
-## **💬 Chat with OSLLM**
-(Feature coming soon)  
-
 ---
 
 ## **📄 Training Data**
